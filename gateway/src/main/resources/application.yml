@@ -1,0 +1,14 @@
+spring:
+  cloud:
+    refresh:
+      enabled: false
+    gateway:
+      mvc:
+        routes:
+          - id: demo
+            uri: http://httpbin.org/uuid
+            predicates:
+              - Path=/api/{segment}
+            filters:
+              - SetPath=/{segment}
+
